@@ -4,14 +4,12 @@
   <meta charset="UTF-8">
   <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zubeir's blog</title>
+  <title>Zubeir's blog | <%=title%></title>
 </head>
 <body>
-  <% const name = 'Zubeir' %> 
   <nav>
     <div class="site-title">
-      <h2>Welcome <%= name %></h2>
-      <a href= "/"><h1>Blog Ninja</h1></a>
+      <a href= "/"><h1>Learner's Blog</h1></a>
     </div>
     <ul> 
       <li><a href="/">Blogs</a></li>
@@ -21,6 +19,14 @@
   </nav>
   <div class="blogs content">
     <h2>All Blogs </h2>
+
+    <% if (blogs.length > 0) { %>
+      <% blogs.forEach(blog => {  %>
+        <h3 class="title"> <%= blog.title %></h3>
+        <p class="snippet"> <%= blog.snippet %></p>
+      <% })%>
+    <% }%>
+
   </div>
 
 </body>

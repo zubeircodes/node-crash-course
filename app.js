@@ -10,20 +10,24 @@ app.set('view engine', 'ejs');
 app.listen(3000);
 
 app.get('/', (req, res) => {
-  // res.send('<p> Home Page</p>'); 
-  res.render('index');
+  const blogs = [
+    {title: 'Getting to know cairo', snippet: 'Your start to learning to navigate the historical city of Cairo'},
+    {title: 'How to learn arabic', snippet: 'Starting from the basics' },
+    {title: 'Essentials for every student', snippet: 'What you need to survive and thrive in Cairo'},
+  ]  
+  res.render('index', { title: 'Home', blogs });
 });
 
 app.get('/about', (req, res) => {
   // res.sendFile('./views/about.html', {root: __dirname });
-  res.render('about');
+  res.render('about', { title: 'About' });
 });
 
 app.get('/blogs/create', (req, res) => {
-  res.render('create');
+  res.render('create', { title: 'Create a new Blog' });
 })
 
 app.use((req, res)=> {
   // res.status(404).sendFile('./views/404.html', {root: __dirname});
-  res.status(404).render('404');
+  res.status(404).render('404', { title: '404' });
 })
